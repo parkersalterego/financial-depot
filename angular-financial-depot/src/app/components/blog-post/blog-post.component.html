@@ -1,0 +1,65 @@
+<!-- Page Content -->
+<div class="container">
+
+  <div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-md-8" >
+        <img class="post-image" [src]="determineImageSize()" alt="">
+      <h1>{{post.title}}</h1>
+      <p>By Dennis Hoffman {{post.date}}</p>
+      <div [innerHTML]="post.body"></div>
+
+    </div>
+    <!-- end col-md-8 -->
+
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
+      <!-- past posts Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Recent Posts</h5>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 flex align-center justify-center">
+              <ul class="post-ul">
+                <li class="post-li" (click)="selectPost(posts[0])">{{posts[0].title}}</li>
+                <li class="post-li" (click)="selectPost(posts[1])">{{posts[1].title}}</li>
+                <li class="post-li" (click)="selectPost(posts[2])">{{posts[2].title}}</li>
+              </ul>
+            </div>
+            <div class="col-md-6 flex align-center justify-center">
+              <ul class="post-ul">
+                <li class="post-li" (click)="selectPost(posts[3])">{{posts[3].title}}</li>
+                <li class="post-li" (click)="selectPost(posts[4])">{{posts[4].title}}</li>
+                <li class="post-li" (click)="selectPost(posts[5])">{{posts[5].title}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Side Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Resources</h5>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 flex justify-center align-center">
+              <ul class="resource-ul">
+                <a [href]="resources[0].url" target="_blank"><li class="resource-li">{{resources[0].title}}</li></a>
+                <a [href]="resources[1].url" target="_blank"><li class="resource-li">{{resources[1].title}}</li></a>
+                <a [href]="resources[2].url" target="_blank"><li class="resource-li">{{resources[2].title}}</li></a>
+              </ul>
+            </div>
+            <div class="col-md-6 flex justify-center align-center">
+              <ul class="resource-ul">
+                <a [href]="resources[3].url" target="_blank"><li class="resource-li">{{resources[3].title}}</li></a>
+                <a [href]="resources[4].url" target="_blank"><li class="resource-li">{{resources[4].title}}</li></a>
+                <a [href]="resources[5].url" target="_blank"><li class="resource-li">{{resources[5].title}}</li></a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

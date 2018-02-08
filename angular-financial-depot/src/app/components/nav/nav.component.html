@@ -1,0 +1,20 @@
+<div class="ham-menu" (click)="onMenuClick()" #hamMenu>
+  <div class="bar" #barOne></div>
+  <div class="bar" #barTwo></div>
+  <div class="bar" #barThree></div>
+</div>
+
+<div class="nav" #navBar>
+  <ul class="nav-ul text-center">
+    <li class="nav-li" (click)="onListItemClick()" [routerLink]="['/']">HOME</li>
+    <li class="nav-li" (click)="onListItemClick()" [routerLink]="['/blog']">BLOG</li>
+    <li class="nav-li" (click)="onListItemClick()" [routerLink]="['/resources']">RESOURCES</li>
+    <li class="nav-li" (click)="onListItemClick()" [routerLink]="['/contact']">CONTACT</li>
+    <ng-template [ngIf]="this.userService.loggedIn()">
+      <li class="nav-li" (click)="onListItemClick()" [routerLink]="['/new-post']">NEW POST</li>
+      <li class="nav-li" (click)="onListItemClick()" [routerLink]="['/new-resource']">NEW RESOURCE</li>
+      <li class="nav-li" (click)="onLogoutClick()" [routerLink]="['/']">LOGOUT</li>
+    </ng-template>
+
+  </ul>
+</div>

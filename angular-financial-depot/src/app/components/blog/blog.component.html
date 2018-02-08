@@ -1,0 +1,66 @@
+<div class="header" [ngStyle]="{'background-image': getHeaderBg()}">
+  <h1 class="logo" #logo>Monthly Updates</h1>
+</div>
+
+<div class="body-container" [ngStyle]="{'background-image': getBodyBg()}">
+
+<div class="container">
+
+
+  <ng-template [ngIf]="postSelected === true">
+    <div class="button-group flex flex-row">
+      <button (click)="this.postSelected = false" [routerLink]="['/blog']" type="button" class="btn btn-outline-dark back-btn">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </button>
+<!-- if user logged in -->
+      <ng-template [ngIf]="this.userService.loggedIn()">
+<!-- new post -->
+        <button [routerLink]="['/new-post']" type="button" class="btn btn-outline-dark new-post">New Post</button>
+<!-- edit post -->
+        <button [routerLink]="['/new-post']" (click)="this.blogService.editPost = true" class="btn btn-outline-dark edit-btn" type="button">Edit Post</button>
+<!-- delete post -->
+        <button [routerLink]="['/']" (click)="deletePost()" class="btn btn-outline-dark edit-btn" type="button">Delete post</button>
+
+      </ng-template>
+    </div>
+    <app-blog-post></app-blog-post>
+  </ng-template>
+
+</div>
+
+<div class="post-cards">
+
+<div class="container post-container" #postContainer>
+  <br>
+
+<!-- [ngStyle]="{'background-image': getCardBg()}" -->
+
+  <div class="row">
+
+    <ng-template [ngIf]="postSelected === false">
+
+      <div class="col-md-4 spacer" *ngFor="let post of posts; let i = index">
+        <div class="card">
+          <div class="card-body flex flex-column text-center">
+            <h4 class="card-title">{{post.title}}</h4>
+            <img class="post-image" [src]="determineImageSize(i)" alt="">
+            <p class="card-text">{{post.body.slice(3,200)}}...</p>
+            <button (click)="this.postSelected = true; showPost(i)" type="button" class=" card-btn btn btn-outline-light">View Post</button>
+          </div>
+        </div>
+      </div>
+
+    </ng-template>
+
+  </div>
+
+
+</div>
+
+</div>
+
+<app-footer></app-footer>
+
+</div>
+
+

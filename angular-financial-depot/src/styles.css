@@ -1,0 +1,99 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Playfair+Display');
+
+@font-face {
+  font-family: 'Cheque-Regular';
+  src: url('/assets/fonts/Cheque-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Cheque-Black';
+  src: url('./assets/fonts/Cheque-Black.otf');
+}
+
+
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Playfair Display', 'sans-serif';
+
+}
+
+/* flex modifiers */
+
+.flex {
+  display: flex;
+
+}
+
+.flex-row {
+  flex-direction: row;
+
+}
+
+.flex-column {
+  flex-direction: column;
+
+}
+
+.justify-start {
+  justify-content: flex-start;
+
+}
+
+.justify-end {
+  justify-content: flex-end;
+
+}
+
+.justify-center {
+  justify-content: center;
+
+}
+
+.justify-space-around {
+  justify-content: space-around;
+
+}
+
+.justify-space-between {
+  justify-content: space-between;
+
+}
+
+.align-start {
+  align-items: flex-start;
+
+}
+
+.align-end {
+  align-items: flex-end;
+
+}
+
+.align-center {
+  align-items: center;
+
+}
+
+.align-space-around {
+  align-items: space-around;
+
+}
+
+.align-space-between {
+  align-items: space-between;
+
+}
+
+
+.body-container {
+  background-image: url("./assets/img/topography.svg"),
+  linear-gradient(110deg, #2B6E92, #6C6D69);
+}
+

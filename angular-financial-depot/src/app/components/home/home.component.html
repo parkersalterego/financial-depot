@@ -1,0 +1,68 @@
+<div class="header" [ngStyle]="{'background-image': getHeaderBg()}">
+  <h1 class="logo" #logo>Financial Depot</h1>
+</div>
+
+<!-- profile -->
+<div class="body-container">
+
+  <div class="profile-container">
+    <div class="profile-sub-container">
+      <div class="profile-image-container">
+        <div class="profile-image"></div>
+      </div>
+      <div class="profile-text flex flex-column justify-center align-center">
+
+        <div class="profile-p">Financial Depot's goal is to provide dividend growth for our clients so they will have disposable cash flow to spend
+          or build wealth by re-investing. Dividend Growth adds value over time as companies increase cash payouts to the
+          share holders.</div>
+          <br>
+        <div class="profile-h2">Dennis Hoffman - CFP</div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- market research -->
+  <div class="text-container flex flex-column justify-center align-center">
+    <h2 class="text-h2">Dedication to Market Research</h2>
+    <p class="text-p">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi blanditiis voluptas, at magni minima et eos, eius corrupti
+      consectetur maxime reprehenderit quos tempore, expedita ullam nobis! Odit voluptates porro sint?</p>
+  </div>
+
+  <!-- clear financial planning -->
+  <div class="clear-container flex justify-center align-center" [ngStyle]="{'background-image': getSomethingImage()}" #clear>
+    <h2 class="clear-text">Clear Financial Planning</h2>
+  </div>
+
+  <!-- updates -->
+  <div class="text-container flex flex-column justify-center align-center">
+    <h2 class="text-h2">Monthly Updates and Resources</h2>
+    <p class="text-p">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi blanditiis voluptas, at magni minima et eos, eius corrupti
+      consectetur maxime reprehenderit quos tempore, expedita ullam nobis! Odit voluptates porro sint?</p>
+  </div>
+
+  <div class="updates-resources-container">
+    <div class="monthly-updates" [routerLink]="['/blog']">
+      <img class="updates-image" [src]="getUpdatesImage()" alt="">
+      <div class="text-backing flex justify-center align-center">
+        <h1 class="lower-text">Updates</h1>
+      </div>
+    </div>
+    <div class="resources" [routerLink]="['/resources']">
+      <img class="resources-image" [src]="getResourcesImage()" alt="">
+      <div class="text-backing flex justify-center align-center">
+        <h1 class="lower-text">Resources</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-container flex flex-column justify-center align-center">
+    <h2 class="text-h2">Get In Touch</h2>
+    <p class="text-p">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi blanditiis voluptas, at magni minima et eos, eius corrupti
+      consectetur maxime reprehenderit quos tempore, expedita ullam nobis! Odit voluptates porro sint?</p>
+    <button class="btn btn-outline-dark" [routerLink]="['/contact']">Contact Us</button>
+  </div>
+
+
+  <app-footer></app-footer>
+</div>

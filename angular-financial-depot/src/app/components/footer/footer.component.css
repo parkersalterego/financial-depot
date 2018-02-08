@@ -1,0 +1,47 @@
+.footer {
+  height: 50px;
+  width: 100%;
+  background: linear-gradient(to bottom, #414345, #232526);
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+.col-sm.footer {
+  padding: none;
+}
+
+.fab {
+  color: #fff;
+  font-size: 35px;
+  margin-left: 10px;
+}
+
+.fab:hover {
+  cursor: pointer;
+}
+
+.footer-left {
+  height: 100%;
+  width: 50%;
+  float: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.footer-right {
+  height: 100%;
+  width: 50%;
+  float: right;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.copyright {
+  color: #fff;
+  margin: 0px 10px 5px 0px;
+
+}

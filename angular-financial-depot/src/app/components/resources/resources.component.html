@@ -1,0 +1,33 @@
+<div class="header" [ngStyle]="{'background-image': getHeaderBg()}">
+  <h1 class="logo" #logo>Resources</h1>
+</div>
+<div class="body-container" [ngStyle]="{'background-image': getBodyBg()}">
+  <div class="container">
+    <div class="row">
+      <div class="spacer"></div>
+      <div *ngFor="let resource of resources | reverse; let i = index" class="col-md-4 resource-container">
+        <div class="card">
+          <div class="card-body flex flex-column text-center">
+            <h4 class="card-title">{{resource.title}}</h4>
+            <img class="post-image" [src]="determineImageSize(i)" alt="">
+            <p class="card-text">{{resource.body.slice(3,100)}}...</p>
+            <a href="{{resource.url}}" target="_blank">
+              <button typr="button" class="card-btn btn btn-outline-light">View Resource</button>
+            </a>
+            <div class="admin-buttons">
+              <!-- if user logged in -->
+              <ng-template [ngIf]="this.userService.loggedIn()">
+                <!-- edit post -->
+                <button [routerLink]="['/new-resource']" (click)="editResource(i)" class="btn btn-outline-light edit-btn" type="button">Edit Post</button>
+                <!-- delete post -->
+                <button [routerLink]="['/']" (click)="deleteResource(i)" class="btn btn-outline-light delete-btn" type="button">Delete Resource</button>
+
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
