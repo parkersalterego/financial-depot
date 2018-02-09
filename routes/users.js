@@ -87,9 +87,4 @@ router.post('/authenticate', (req, res, next) => {
     });
 });
 
-app.use(function (err, req, res, next) {
-    console.log(err.message);
-  });
-
-
 module.exports = router;

@@ -1,3 +1,21 @@
+button {
+  color: #fff;
+  background-color: rgba(0,0,0,0.5);
+  box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+
+}
+
+button:hover {
+  color: #fff;
+  background-color: rgba(0,0,0,0.5);
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+  transform: translateY(-2px);
+}
+
+.btn {
+  border: 1px solid #fff;
+}
+
 .card {
   margin-bottom: 30px;
   color: #fff;
@@ -23,8 +41,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
-  box-shadow: 0px 5px 5px 5px rgba(0,0,0,0.75);
-  margin-bottom: 10px;
+
 }
 
 .logo {

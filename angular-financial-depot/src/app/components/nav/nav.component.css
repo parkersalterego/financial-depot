@@ -2,7 +2,7 @@
   height: 33px;
   width: 50px;
   margin-top: 10px;
-  margin-left: 5px;
+  margin-left: 10px;
   position: fixed;
   top: 0;
   left: 0;
@@ -235,13 +235,6 @@
   }
   100% {
     top: -100%;
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .ham-menu {
-    margin-left: 2px;
-    margin-top: 2px;
   }
 }
 

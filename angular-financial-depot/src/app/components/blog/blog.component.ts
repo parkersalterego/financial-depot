@@ -75,10 +75,6 @@ export class BlogComponent implements OnInit {
     return this.posts[i].image;
   }
 
-  getBodyBg() {
-    return "url('/assets/img/topography.png')";
-  }
-
   getCardBg() {
     return "url('/assets/img/mochaGrunge.png')";
   }

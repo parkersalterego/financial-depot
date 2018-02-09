@@ -1,7 +1,7 @@
 <div class="header" [ngStyle]="{'background-image': getHeaderBg()}">
   <h1 class="logo" #logo>Resources</h1>
 </div>
-<div class="body-container" [ngStyle]="{'background-image': getBodyBg()}">
+<div class="body-container">
   <div class="container">
     <div class="row">
       <div class="spacer"></div>
@@ -18,7 +18,7 @@
               <!-- if user logged in -->
               <ng-template [ngIf]="this.userService.loggedIn()">
                 <!-- edit post -->
-                <button [routerLink]="['/new-resource']" (click)="editResource(i)" class="btn btn-outline-light edit-btn" type="button">Edit Post</button>
+                <button [routerLink]="['/new-resource']" (click)="editResource(i)" class="btn btn-outline-light edit-btn" type="button">Edit Resource</button>
                 <!-- delete post -->
                 <button [routerLink]="['/']" (click)="deleteResource(i)" class="btn btn-outline-light delete-btn" type="button">Delete Resource</button>
 

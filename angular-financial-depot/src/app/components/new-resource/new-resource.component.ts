@@ -18,7 +18,14 @@ export class NewResourceComponent implements OnInit {
   image: String = '';
   url: String = '';
 
-  @ViewChild('postContent') postContent;
+  @ViewChild('contentContainer') contentContainer;
+  @ViewChild('resourceTitle') resourceTitle;
+  @ViewChild('resourceImage') resourceImage;
+  @ViewChild('resourceUrl') resourceUrl;
+  @ViewChild('viewTitle') viewTitle;
+  @ViewChild('viewImage') viewImage;
+  @ViewChild('viewUrl') viewUrl;
+  @ViewChild('viewContent') viewContent;
   @ViewChild('logo') logo;
   @ViewChild(TinyComponent)
   private tinyComponent: TinyComponent;
@@ -32,7 +39,7 @@ export class NewResourceComponent implements OnInit {
 
   ngOnInit() {
     this.editCheck();
-
+    this.contentContainer.nativeElement.style.minHeight = `${this.window.screen.availHeight - 500}px`;
   }
 
   @HostListener('window:scroll', [])
@@ -64,7 +71,10 @@ export class NewResourceComponent implements OnInit {
         body: event
       };
     }
-    this.postContent.nativeElement.innerHTML = event;
+    this.viewContent.nativeElement.innerHTML = event;
+    this.viewImage.nativeElement.style.backgroundImage = `url(${this.resourceImage.nativeElement.value})`;
+    this.viewTitle.nativeElement.innerHTML = `<h1>${this.resource.title}</h1>`;
+
   }
 
   editCheck() {
@@ -74,11 +84,28 @@ export class NewResourceComponent implements OnInit {
         this.title = this.resource.title;
         this.image = this.resource.image;
         this.url = this.resource.url;
+
+        this.viewContent.nativeElement.innerHTML = this.resource.body;
+        this.viewImage.nativeElement.innerHTML = `<img class="preview-img" src='${this.resource.image}'>`;
+        this.viewTitle.nativeElement.innerHTML = `<h1>${this.resource.title}</h1>`;
       });
     }
   }
 
+  titleUpdate(event) {
+    this.viewTitle.nativeElement.innerHTML = `<h1>${this.resourceTitle.nativeElement.value}</h1>`;
+  }
+
+  imageUpdate(event) {
+    this.viewImage.nativeElement.style.backgroundImage = `url(${this.resourceImage.nativeElement.value})`;
+  }
+
+  urlUpdate(event) {
+    this.viewUrl.nativeElement.innerHTML = `<a href="${this.resourceUrl.nativeElement.value}" target="_blank"><input type="submit" class="btn btn-custom submit" value="View Resource"></a>`;
+  }
+
   onSubmit() {
+    console.log('submit clicked');
     if (this.resourceService.editResource === true && this.title !== '' && this.image !== '' && this.url !== '') {
       this.resource.title = this.title;
       this.resource.image = this.image;

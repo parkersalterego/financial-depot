@@ -27,7 +27,7 @@ export class TinyComponent implements AfterViewInit, OnDestroy, OnInit {
       height: '500px',
       selector: '#' + this.elementId,
       plugins: ['link', 'paste', 'table'],
-      skin_url: 'assets/skins/lightgray',
+      skin_url: 'assets/skins/custom',
       setup: editor => {
         this.editor = editor;
         editor.on('keyup', () => {

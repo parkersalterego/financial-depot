@@ -6,9 +6,9 @@
     <!-- Post Content Column -->
     <div class="col-md-8" >
         <img class="post-image" [src]="determineImageSize()" alt="">
-      <h1>{{post.title}}</h1>
-      <p>By Dennis Hoffman {{post.date}}</p>
-      <div [innerHTML]="post.body"></div>
+      <h1 class="post-title">{{post.title}}</h1>
+      <p class="post-info">By Dennis Hoffman {{post.date}}</p>
+      <div class="post-body" [innerHTML]="post.body"></div>
 
     </div>
     <!-- end col-md-8 -->
@@ -16,7 +16,7 @@
     <!-- Sidebar Widgets Column -->
     <div class="col-md-4">
       <!-- past posts Widget -->
-      <div class="card my-4">
+      <div class="card my-4 side-card">
         <h5 class="card-header">Recent Posts</h5>
         <div class="card-body">
           <div class="row">
@@ -38,7 +38,7 @@
         </div>
       </div>
       <!-- Side Widget -->
-      <div class="card my-4">
+      <div class="card my-4 side-card">
         <h5 class="card-header">Resources</h5>
         <div class="card-body">
           <div class="row">

@@ -1,7 +1,7 @@
 <div class="header" [ngStyle]="{'background-image': getHeaderBg()}">
-    <h1 class="logo" #logo>New Resource</h1>
-  </div>
-
+  <h1 class="logo" #logo>New Resource</h1>
+</div>
+<div class="body-container">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -22,18 +22,18 @@
             <div class="inputs flex flex-column">
               <div class="input-group flex flex-column align-center">
                 <label for="title">Title</label>
-                <input type="text" id="title" [(ngModel)]="title" name="title">
+                <input (keyup)="titleUpdate($event)" type="text" id="title" [(ngModel)]="title" name="title" #resourceTitle>
               </div>
 
               <div class="input-group flex flex-column align-center">
                 <label for="image">Image URL</label>
-                <input type="text" id="image" [(ngModel)]="image" name="image">
+                <input (keyup)="imageUpdate($event)" type="text" id="image" [(ngModel)]="image" name="image" #resourceImage>
               </div>
 
               <div class="input-group flex flex-column align-center">
-                  <label for="url">URL</label>
-                  <input type="text" id="url" [(ngModel)]="url" name="url">
-                </div>
+                <label for="url">URL</label>
+                <input (keyup)="urlUpdate($event)" type="text" id="url" [(ngModel)]="url" name="url" #resourceUrl>
+              </div>
             </div>
 
             <hr>
@@ -41,15 +41,20 @@
             <app-tiny [elementId]="post-body" (onEditorKeyup)="onEditorKeyup($event)"></app-tiny>
             <br>
             <div class="text-center">
-              <input type="submit" class="btn btn-outline-dark submit" value="Submit" (click)="onSubmit()">
+              <input type="submit" class="btn btn-custom submit" value="Submit" (click)="onSubmit()">
             </div>
 
 
           </div>
 
           <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="view-post">
-              <div #postContent></div>
+            <div class="view-resource">
+              <div class="content-container" #contentContainer>
+                <div class="resource-image" #viewImage></div>
+                <div class="resource-title" #viewTitle></div>
+                <div class="resource-content" #viewContent></div>
+                <div class="resource-link" #viewUrl></div>
+              </div>
             </div>
           </div>
 
@@ -58,4 +63,4 @@
       </div>
     </div>
   </div>
-
+</div>

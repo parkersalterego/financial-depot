@@ -18,15 +18,20 @@ export class NewPostComponent implements OnInit {
   title: String = '';
   image: String = '';
 
+  @ViewChild('viewImage') viewImage;
+  @ViewChild('viewTitle') viewTitle;
+  @ViewChild('postImage') postImage;
+  @ViewChild('postTitle') postTitle;
+  @ViewChild('contentContainer') contentContainer;
   @ViewChild('logo') logo;
-  @ViewChild('postContent') postContent;
+  @ViewChild('viewContent') viewContent;
   @ViewChild(TinyComponent)
   private tinyComponent: TinyComponent;
 
   constructor(
-              @Inject(WINDOW) private window: Window,
-              @Inject(DOCUMENT) private document: Document,
-              private blogService: BlogService, private router: Router) { }
+    @Inject(WINDOW) private window: Window,
+    @Inject(DOCUMENT) private document: Document,
+    private blogService: BlogService, private router: Router) { }
 
   ngOnInit() {
     if (this.blogService.editPost === true) {
@@ -34,8 +39,13 @@ export class NewPostComponent implements OnInit {
         this.title = post.title;
         this.image = post.image;
         this.post = post;
+        this.viewContent.nativeElement.innerHTML = this.post.body;
+        this.viewImage.nativeElement.innerHTML = `<img class="preview-img" src='${this.post.image}'>`;
+        this.viewTitle.nativeElement.innerHTML = `<h1>${this.post.title}</h1>`;
       });
     }
+    this.contentContainer.nativeElement.style.minHeight = `${this.window.screen.availHeight - 500}px`;
+
   }
 
   @HostListener('window:scroll', [])
@@ -46,6 +56,14 @@ export class NewPostComponent implements OnInit {
     } else {
       this.logo.nativeElement.style.transform = `translate(-50%, ${-50 + (this.window.scrollY / 3)}%`;
     }
+  }
+
+  titleUpdate(event) {
+    this.viewTitle.nativeElement.innerHTML = `<h1>${this.postTitle.nativeElement.value}</h1>`;
+  }
+
+  imageUpdate(event) {
+    this.viewImage.nativeElement.style.backgroundImage = `url(${this.postImage.nativeElement.value})`;
   }
 
   onEditorKeyup(event) {
@@ -65,7 +83,9 @@ export class NewPostComponent implements OnInit {
         body: event
       };
     }
-    this.postContent.nativeElement.innerHTML = event;
+    this.viewContent.nativeElement.innerHTML = event;
+    this.viewImage.nativeElement.style.backgroundImage = `url(${this.postImage.nativeElement.value})`;
+    this.viewTitle.nativeElement.innerHTML = `<h1>${this.postTitle.nativeElement.value}</h1>`;
   }
 
   onSubmit() {

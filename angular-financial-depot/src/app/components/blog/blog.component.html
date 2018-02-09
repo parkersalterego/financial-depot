@@ -2,24 +2,24 @@
   <h1 class="logo" #logo>Monthly Updates</h1>
 </div>
 
-<div class="body-container" [ngStyle]="{'background-image': getBodyBg()}">
+<div class="body-container">
 
 <div class="container">
 
 
   <ng-template [ngIf]="postSelected === true">
     <div class="button-group flex flex-row">
-      <button (click)="this.postSelected = false" [routerLink]="['/blog']" type="button" class="btn btn-outline-dark back-btn">
+      <button (click)="this.postSelected = false" [routerLink]="['/blog']" type="button" class="btn back-btn">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
       </button>
 <!-- if user logged in -->
       <ng-template [ngIf]="this.userService.loggedIn()">
 <!-- new post -->
-        <button [routerLink]="['/new-post']" type="button" class="btn btn-outline-dark new-post">New Post</button>
+        <button [routerLink]="['/new-post']" type="button" class="btn new-post">New Post</button>
 <!-- edit post -->
-        <button [routerLink]="['/new-post']" (click)="this.blogService.editPost = true" class="btn btn-outline-dark edit-btn" type="button">Edit Post</button>
+        <button [routerLink]="['/new-post']" (click)="this.blogService.editPost = true" class="btn edit-btn" type="button">Edit Post</button>
 <!-- delete post -->
-        <button [routerLink]="['/']" (click)="deletePost()" class="btn btn-outline-dark edit-btn" type="button">Delete post</button>
+        <button [routerLink]="['/']" (click)="deletePost()" class="btn edit-btn" type="button">Delete post</button>
 
       </ng-template>
     </div>
