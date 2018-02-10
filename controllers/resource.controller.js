@@ -4,73 +4,74 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 
+const Resource = require('../models/resource');
 
-const Post = require('../models/post');
-
-// get posts
+// get resource
 router.get('/', (req, res, next) => {
-    Post.getPosts((err, posts) => {
+    Resource.getResources((err, resources) => {
         if (err) {
             throw err;
         }
-        res.json(posts);
+        res.json(resources);
     })
 });
 
 // get post by id
 router.get('/:_id', (req, res, next) => {
-    Post.getPostById(req.params._id, (err, post) => {
+    Resource.getResourceById(req.params._id, (err, resource) => {
         if (err) {
             throw err;
         }
-        res.json(post);
+        res.json(resource);
     });
 });
 
 // add post
 router.post('/', (req, res, next) => {
-    let post = new Post({
+    let resource = new Resource({
         title: req.body.title,
+        body: req.body.body,
         image: req.body.image,
         date: req.body.date,
-        body: req.body.body
+        url: req.body.url
     });
 
-    Post.addPost(post, (err, post) => {
+    Resource.addResource(resource, (err, resource) => {
         if (err) {
             throw err;
         }
-        res.json(post);
+        res.json(resource);
     });
 });
 
-// update post
+// update resource
 router.put('/:_id', (req, res, next) => {
-    let id = req. params._id;
-    let post = new Post({
+    let id = req.params._id;
+    let resource = new Resource({
         title: req.body.title,
+        body: req.body.body,
         image: req.body.image,
         date: req.body.date,
-        body: req.body.body
+        url: req.body.url
         
     });
 
-    Post.updatePost(id, post, {}, (err, post) => {
+    Resource.updateResource(id, resource, {}, (err, resource) => { 
         if (err) {
             throw err;
         }
-        res.json(post);
+        res.json(resource);
     });
 });
 
-// delete post 
+// delete resource 
 router.delete('/:_id', (req, res, next) => {
     let id = req.params._id;
-    Post.deletePost(id, (err, post) => {
+    Resource.deleteResource(id, (err, resource) => {
         if (err) {
             throw err;
         }
-        res.json(post);
+        res.json(resource);
     })
 });
 

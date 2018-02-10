@@ -31,11 +31,11 @@
 }
 
 .bar:nth-child(1).animate {
-  animation: ham-one .5s ease-in forwards running;
+  animation: ham-one .35s ease-in forwards running;
 }
 
 .bar:nth-child(1).animate-reverse {
-  animation: ham-one-reverse .5s ease-out forwards running;
+  animation: ham-one-reverse .35s ease-out forwards running;
 }
 
 /* bar two */
@@ -46,11 +46,11 @@
 }
 
 .bar:nth-child(2).animate {
-  animation: ham-two .5s ease-in forwards running;
+  animation: ham-two .35s ease-in forwards running;
 }
 
 .bar:nth-child(2).animate-reverse {
-  animation: ham-two-reverse .5s ease-out forwards running;
+  animation: ham-two-reverse .35s ease-out forwards running;
 }
 
 /*  bar three */
@@ -61,11 +61,11 @@
 }
 
 .bar:nth-child(3).animate {
-  animation: ham-three .5s ease-in forwards running;
+  animation: ham-three .35s ease-in forwards running;
 }
 
 .bar:nth-child(3).animate-reverse {
-  animation: ham-three-reverse .5s ease-out forwards running;
+  animation: ham-three-reverse .35s ease-out forwards running;
 }
 
 /* nav pop out */
@@ -111,11 +111,11 @@
 }
 
 .nav.animate {
-  animation: nav-slide-out .5s ease-out forwards running;
+  animation: nav-slide-out .35s ease-out forwards running;
 }
 
 .nav.animate-reverse {
-  animation: nav-slide-in .5s ease-in forwards running;
+  animation: nav-slide-in .35s ease-in forwards running;
 }
 
 /* animations */

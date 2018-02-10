@@ -57,7 +57,3 @@ app.get('/', (req, res, next) => {
 app.listen(port, () => {
     console.log('Connected on port ' + port);
 });
-
-app.use(function (err, req, res, next) {
-    console.log(err.message);
-  });
