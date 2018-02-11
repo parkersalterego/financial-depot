@@ -13,14 +13,6 @@ router.get('/', (req, res, next) => {
 
 });
 
-// profile
-router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-    res.json({
-        user: req.user
-
-    });
-});
-
 // register
 router.post('/register', (req, res, next) => {
     let newUser = new User({
@@ -49,7 +41,7 @@ router.post('/authenticate', (req, res, next) => {
 
     User.getUserByUsername(username, (err, user) => {
         if (err) {
-            next(err);
+            res.send(err);
 
         }
         if (!user) {
@@ -59,7 +51,7 @@ router.post('/authenticate', (req, res, next) => {
 
         User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) {
-                 next(err);
+                res.send(err);
 
             }
 
@@ -80,7 +72,7 @@ router.post('/authenticate', (req, res, next) => {
                     }
                 });
             } else {
-                return res.json({success: false, msg: 'Wrong password'});
+                return res.json({success: false, msg: 'Incorrect password'});
 
             }
         });

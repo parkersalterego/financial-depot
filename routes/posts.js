@@ -11,7 +11,7 @@ const Post = require('../models/post');
 router.get('/', (req, res, next) => {
     Post.getPosts((err, posts) => {
         if (err) {
-            throw err;
+            res.send(err);
         }
         res.json(posts);
     })
@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
 router.get('/:_id', (req, res, next) => {
     Post.getPostById(req.params._id, (err, post) => {
         if (err) {
-            throw err;
+            res.send(err);
         }
         res.json(post);
     });
@@ -38,7 +38,7 @@ router.post('/', (req, res, next) => {
 
     Post.addPost(post, (err, post) => {
         if (err) {
-            throw err;
+            res.send(err);
         }
         res.json(post);
     });
@@ -57,7 +57,7 @@ router.put('/:_id', (req, res, next) => {
 
     Post.updatePost(id, post, {}, (err, post) => {
         if (err) {
-            throw err;
+            res.send(err);
         }
         res.json(post);
     });
@@ -68,7 +68,7 @@ router.delete('/:_id', (req, res, next) => {
     let id = req.params._id;
     Post.deletePost(id, (err, post) => {
         if (err) {
-            throw err;
+            res.send(err);
         }
         res.json(post);
     })
