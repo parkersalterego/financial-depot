@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const config = require('../config/database');
 
 const Resource = require('../models/resource');
 
@@ -20,7 +19,7 @@ router.get('/', (req, res, next) => {
 router.get('/:_id', (req, res, next) => {
     Resource.getResourceById(req.params._id, (err, resource) => {
         if (err) {
-            res.send(err);
+            return next(err);
         }
         res.json(resource);
     });
@@ -38,7 +37,7 @@ router.post('/', (req, res, next) => {
 
     Resource.addResource(resource, (err, resource) => {
         if (err) {
-            res.send(err);
+            return next(err);
         }
         res.json(resource);
     });
@@ -58,7 +57,7 @@ router.put('/:_id', (req, res, next) => {
 
     Resource.updateResource(id, resource, {}, (err, resource) => { 
         if (err) {
-            res.send(err);
+            return next(err);
         }
         res.json(resource);
     });
@@ -69,10 +68,10 @@ router.delete('/:_id', (req, res, next) => {
     let id = req.params._id;
     Resource.deleteResource(id, (err, resource) => {
         if (err) {
-            res.send(err);
+            return next(err);
         }
         res.json(resource);
-    })
+    });
 });
 
 module.exports = router;
