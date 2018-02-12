@@ -18,7 +18,7 @@ const users = require('./routes/users');
 const posts = require('./routes/posts');
 const resources = require('./routes/resources');
 
-app.use(logger('common',  {stream: fs.createWriteStream('./access.log', {flags: 'a'})}));
+app.use(logger('common', {stream: fs.createWriteStream('./access.log', {flags: 'a'})}));
 app.use(logger('dev'));
 
 // cors middleware
