@@ -47,11 +47,17 @@ app.use('/users', users);
 app.use('/posts', posts);
 app.use('/resources', resources);
 
+app.use(
+    function (err, req, res, next) { 
+        console.log(err.message);
+        res.status(422).send({error: err.message});
+    }
+);
+
 // index route
 app.get('/', (req, res, next) => {
     res.send('Invalid endpoint');
 });
-
 
 // start server
 app.listen(port, () => {

@@ -3,28 +3,20 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-
-
 const Post = require('../models/post');
 
 // get posts
 router.get('/', (req, res, next) => {
     Post.getPosts((err, posts) => {
-        if (err) {
-            res.send(err);
-        }
         res.json(posts);
-    })
+    }).catch(next);
 });
 
 // get post by id
 router.get('/:_id', (req, res, next) => {
     Post.getPostById(req.params._id, (err, post) => {
-        if (err) {
-            res.send(err);
-        }
         res.json(post);
-    });
+    }).catch(next);
 });
 
 // add post
@@ -37,11 +29,8 @@ router.post('/', (req, res, next) => {
     });
 
     Post.addPost(post, (err, post) => {
-        if (err) {
-            res.send(err);
-        }
         res.json(post);
-    });
+    }).catch(next);
 });
 
 // update post
@@ -56,22 +45,16 @@ router.put('/:_id', (req, res, next) => {
     });
 
     Post.updatePost(id, post, {}, (err, post) => {
-        if (err) {
-            res.send(err);
-        }
         res.json(post);
-    });
+    }).catch(next);
 });
 
 // delete post 
 router.delete('/:_id', (req, res, next) => {
     let id = req.params._id;
     Post.deletePost(id, (err, post) => {
-        if (err) {
-            res.send(err);
-        }
         res.json(post);
-    })
+    }).catch(next);
 });
 
 module.exports = router;
