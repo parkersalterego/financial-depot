@@ -58,10 +58,6 @@ resources: Resource[];
     return "url('./assets/img/resources-md.jpeg')";
   }
 
-  getBodyBg() {
-    return "url('/assets/img/topography.png')";
-  }
-
   determineImageSize(i) {
     return this.resources[i].image;
   }

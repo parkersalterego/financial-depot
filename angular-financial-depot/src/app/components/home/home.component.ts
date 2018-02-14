@@ -56,10 +56,6 @@ export class HomeComponent implements OnInit {
     return "url('./assets/img/home-lg.jpeg')";
   }
 
-  getBodyBg() {
-    return "url('./assets/img/topography.svg')";
-  }
-
   getProfileImage() {
     return "url('http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg')";
   }
@@ -77,7 +73,7 @@ export class HomeComponent implements OnInit {
   }
 
   getContactImage() {
-    return "url('/assets/img/contact-md.jpeg')"
+    return "url('/assets/img/contact-md.jpeg')";
   }
 
 }

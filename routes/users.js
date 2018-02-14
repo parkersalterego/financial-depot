@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const config = require('../config/database');
+require('dotenv').config();
 
 
 const User = require('../models/user');
@@ -11,14 +11,6 @@ const User = require('../models/user');
 router.get('/', (req, res, next) => {
     res.send('USERS');
 
-});
-
-// profile
-router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-    res.json({
-        user: req.user
-
-    });
 });
 
 // register
@@ -49,7 +41,7 @@ router.post('/authenticate', (req, res, next) => {
 
     User.getUserByUsername(username, (err, user) => {
         if (err) {
-            next(err);
+            return next(err);
 
         }
         if (!user) {
@@ -59,12 +51,12 @@ router.post('/authenticate', (req, res, next) => {
 
         User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) {
-                 next(err);
+                return next(err);
 
             }
 
             if (isMatch) {
-                const token = jwt.sign(user, config.secret, {
+                const token = jwt.sign(user, process.env.SECRET, {
                     expiresIn: 604800 // 1 week
 
                 });
@@ -80,16 +72,12 @@ router.post('/authenticate', (req, res, next) => {
                     }
                 });
             } else {
-                return res.json({success: false, msg: 'Wrong password'});
+                return res.json({success: false, msg: 'Incorrect password'});
 
             }
         });
     });
 });
-
-app.use(function (err, req, res, next) {
-    console.log(err.message);
-  });
 
 
 module.exports = router;

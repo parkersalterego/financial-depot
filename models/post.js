@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const config = require('../config/database');
 const bcrypt = require('bcryptjs');
 
 const PostSchema = new mongoose.Schema({
@@ -27,17 +26,17 @@ const Post = module.exports = mongoose.model('Post', PostSchema);
 
 module.exports.getPosts = (callback, limit) => {
     Post.find(callback).limit(limit);
-}
+};
 
 // get post by id
 module.exports.getPostById = (id, callback) => {
     Post.findById(id, callback);
-}
+};
 
 // add post 
 module.exports.addPost = (post, callback) => {
     Post.create(post, callback);
-}
+};
 
 //update post
 module.exports.updatePost = (id, post, options, callback) => {
@@ -47,16 +46,16 @@ module.exports.updatePost = (id, post, options, callback) => {
         image: post.image,
         date: post.date,
         body: post.body 
-    }
+    };
 
     Post.findOneAndUpdate(query, update, options, callback);
-}
+};
 
 // delete guest
 module.exports.deletePost = (id, callback) => {
     let query = {_id: id};
     Post.remove(query, callback);
-}
+};
 
 
 

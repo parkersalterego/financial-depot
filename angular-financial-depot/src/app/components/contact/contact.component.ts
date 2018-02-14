@@ -33,8 +33,4 @@ export class ContactComponent implements OnInit {
     return "url('/assets/img/contact-md.jpeg')";
   }
 
-  getBodyBg() {
-    return "url('/assets/img/topography.png')";
-  }
-
 }
