@@ -27,17 +27,32 @@ button:hover {
   overflow: hidden;
 }
 
+.header-text {
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .logo {
   color: #fff;
   font-family: 'Cheque-Regular', sans-serif;
   font-size: 70px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   text-align: center;
-  transform: translate(-50%, -50%);
   border-bottom: 2px solid #fff;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}
+
+.mission {
+  color: #fff;
+  font-size: 20px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+  text-align: center;
+
 }
 
 .body-container {
@@ -297,11 +312,18 @@ button:hover {
   }
 
   .profile-image-container {
-    height: 240px;
+    height: 100px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .profile-image {
+    margin-bottom: 70px;
+    height: 150px;
+    width: 150px;
+
   }
 
   .profile-text {
