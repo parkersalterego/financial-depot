@@ -44,7 +44,7 @@
           <div class="card-body flex flex-column text-center">
             <h4 class="card-title">{{post.title}}</h4>
             <img class="post-image" [src]="determineImageSize(i)" alt="">
-            <p class="card-text">{{post.body.slice(3,200)}}...</p>
+            <p class="card-text">{{post.body.substring(0, post.body.length -4).slice(3,200)}}...</p>
             <button (click)="this.postSelected = true; showPost(i)" type="button" class=" card-btn btn btn-outline-light">View Post</button>
           </div>
         </div>
