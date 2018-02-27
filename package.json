@@ -7,15 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "bcryptjs": "*",
-    "body-parser": "*",
-    "cors": "*",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "dotenv": "^5.0.0",
-    "express": "*",
-    "mongoose": "*",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.7",
     "morgan": "^1.9.0",
-    "passport": "*",
-    "passport-jwt": "*"
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1"
   },
   "author": "",
   "license": "ISC"

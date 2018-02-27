@@ -18,7 +18,11 @@ const users = require('./routes/users');
 const posts = require('./routes/posts');
 const resources = require('./routes/resources');
 
-app.use(logger('common', {stream: fs.createWriteStream('./access.log', {flags: 'a'})}));
+app.use(logger('common', {
+    stream: fs.createWriteStream('./access.log', {
+        flags: 'a'
+    })
+}));
 app.use(logger('dev'));
 
 // cors middleware
@@ -43,8 +47,9 @@ mongoose.connection.on('connected', (req, res, next) => {
     console.log('Connected to database ' + process.env.DATABASE);
 });
 
-mongoose.connection.on('error', (err) => {
+mongoose.connection.on('error', (err, next) => {
     console.log('Error connecting to database: ' + err);
+    next(err);
 });
 
 // set route prefixes
@@ -58,7 +63,7 @@ app.get('/', (req, res, next) => {
 });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -67,7 +72,7 @@ app.use(function(req, res, next) {
 // dev error handler
 // prints stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use(function (err, req, res, next) {
         res.status(err.code || 500)
             .json({
                 status: 'error',
@@ -78,7 +83,7 @@ if (app.get('env') === 'development') {
 
 // prod error handler
 // no stack trace
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     res.status(err.status || 500)
         .json({
             status: 'error',
@@ -88,7 +93,7 @@ app.use(function(err, req, res, next) {
 
 
 // start server
-app.listen(app.get("port"), function() {
+app.listen(app.get("port"), function () {
     console.log('\n' + '*******************************');
     console.log('REST API listening on port ' + app.get("port"));
     console.log('*******************************' + '\n');

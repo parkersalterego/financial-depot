@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
   }
 
   getProfileImage() {
-    return "url('http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg')";
+    return "url('./assets/img/Dennis.jpg')";
   }
 
   getUpdatesImage() {
