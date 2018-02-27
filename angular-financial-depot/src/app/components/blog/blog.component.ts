@@ -54,7 +54,6 @@ export class BlogComponent implements OnInit {
 
       for (let i = 0; i < this.posts.length; i++) {
         this.posts[i].body = this.posts[i].body.replace(/<\/?[^>]+(>|$)/g, '').replace('&nbsp;', '');
-        console.log(this.posts[i].body);
       }
     });
   }
