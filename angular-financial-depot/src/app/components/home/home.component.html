@@ -1,5 +1,8 @@
 <div class="header" [ngStyle]="{'background-image': getHeaderBg()}">
-  <h1 class="logo" #logo>Financial Depot</h1>
+  <div class="header-text" #headerText>
+      <h1 class="logo">Financial Depot</h1>
+      <h4 class="mission">Small Enough to Appreciate You - Big Enough to Serve You</h4>
+  </div>
 </div>
 
 <!-- profile -->
@@ -8,7 +11,7 @@
   <div class="profile-container">
     <div class="profile-sub-container">
       <div class="profile-image-container">
-        <div class="profile-image"></div>
+        <div class="profile-image" [ngStyle]="{'background-image': getProfileImage()}"></div>
       </div>
       <div class="profile-text flex flex-column justify-center align-center">
 
@@ -25,8 +28,13 @@
   <!-- market research -->
   <div class="text-container flex flex-column justify-center align-center">
     <h2 class="text-h2">Dedication to Market Research</h2>
-    <p class="text-p">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi blanditiis voluptas, at magni minima et eos, eius corrupti
-      consectetur maxime reprehenderit quos tempore, expedita ullam nobis! Odit voluptates porro sint?</p>
+    <p class="text-p">We research DGI (Dividend Growth Investing) several days per week. We
+      use Seeking Alpha and Dividend Hunting Services from multiple sources
+      that we purchase. Our goal is active management that stays ahead of the
+      market trends. We follow REITs traded commercial real estate, ETF’s
+      exchange traded funds, and CEF closed end funds. We also follow a very
+      small number of mutual funds that pay dividends and offer diversification
+      to our portfolios.</p>
   </div>
 
   <!-- clear financial planning -->
@@ -58,8 +66,7 @@
 
   <div class="text-container flex flex-column justify-center align-center">
     <h2 class="text-h2">Get In Touch</h2>
-    <p class="text-p">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi blanditiis voluptas, at magni minima et eos, eius corrupti
-      consectetur maxime reprehenderit quos tempore, expedita ullam nobis! Odit voluptates porro sint?</p>
+    <p class="text-p"> Our goal is to have clear consistant communication about our firm so we can meet your needs. We look forward to hearing from you soon.</p>
     <button class="btn" [routerLink]="['/contact']">Contact Us</button>
   </div>
 

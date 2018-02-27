@@ -33,6 +33,7 @@ export class BlogComponent implements OnInit {
     this.getPosts();
 
     this.userService.loadToken();
+
   }
 
   @HostListener('window:scroll', [])
@@ -50,6 +51,10 @@ export class BlogComponent implements OnInit {
       this.posts = posts;
       this.posts = this.posts.reverse();
       this.blogService.blogPosts = this.posts;
+
+      for (let i = 0; i < this.posts.length; i++) {
+        this.posts[i].body = this.posts[i].body.replace(/<\/?[^>]+(>|$)/g, '').replace('&nbsp;', '');
+      }
     });
   }
 

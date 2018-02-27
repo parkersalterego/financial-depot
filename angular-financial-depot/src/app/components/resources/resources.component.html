@@ -10,7 +10,7 @@
           <div class="card-body flex flex-column text-center align-center">
             <h4 class="card-title">{{resource.title}}</h4>
             <img class="post-image" [src]="determineImageSize(i)" alt="">
-            <p class="card-text">{{resource.body.slice(3,100)}}...</p>
+            <p class="card-text">{{resource.body.substring(0, resource.body.length -4).slice(3)}}...</p>
             <a href="{{resource.url}}" target="_blank">
               <button typr="button" class="card-btn btn">View Resource</button>
             </a>

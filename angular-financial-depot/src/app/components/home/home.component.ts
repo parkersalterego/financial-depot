@@ -15,8 +15,9 @@ export class HomeComponent implements OnInit {
   posts;
   bgImage = './assets/img/topography.svg';
 
-  @ViewChild('logo') logo;
+  @ViewChild('headerText') headerText;
   @ViewChild('clear') clear;
+
 
   constructor(
               @Inject(WINDOW) private window: Window,
@@ -42,9 +43,11 @@ export class HomeComponent implements OnInit {
   onWindowScroll() {
 
     if (this.window.scrollY < 500 && this.window.innerWidth >=  1260) {
-      this.logo.nativeElement.style.transform = `translate(-50%, ${-50 + (this.window.scrollY / 2)}%`;
+      this.headerText.nativeElement.style.transform = `translate(-50%, ${-50 + (this.window.scrollY / 2)}%`;
+
     } else {
-      this.logo.nativeElement.style.transform = `translate(-50%, ${-50 + (this.window.scrollY / 3)}%`;
+      this.headerText.nativeElement.style.transform = `translate(-50%, ${-50 + (this.window.scrollY / 3)}%`;
+
     }
 
     if (this.window.scrollY > 500) {
@@ -57,7 +60,7 @@ export class HomeComponent implements OnInit {
   }
 
   getProfileImage() {
-    return "url('http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg')";
+    return "url('./assets/img/Dennis.jpg')";
   }
 
   getUpdatesImage() {
