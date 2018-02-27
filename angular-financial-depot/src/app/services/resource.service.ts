@@ -11,7 +11,7 @@ const httpOptions = {
 
 @Injectable()
 export class ResourceService {
-  resourcesUrl = '/resources';
+  resourcesUrl = 'resources';
   resources: Resource[];
   editResource: Boolean;
   editableResourceId: String;

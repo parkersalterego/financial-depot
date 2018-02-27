@@ -19,28 +19,28 @@ export class BlogService {
   }
 
   getPosts() {
-    return this.http.get('/posts')
+    return this.http.get('posts')
     .map(res => res.json());
   }
 
   getPostById(id) {
-    return this.http.get('/posts/' + id)
+    return this.http.get('posts/' + id)
     .map(res => res.json());
 
   }
 
   addPost(post) {
-    return this.http.post('/posts/', post)
+    return this.http.post('posts/', post)
       .map(res => res.json());
   }
 
   updatePost(post) {
-    return this.http.put(`/posts/${post._id}`, post)
+    return this.http.put(`posts/${post._id}`, post)
       .map(res => res.json);
   }
 
   deletePost(id) {
-    return this.http.delete('/posts/' + id)
+    return this.http.delete('posts/' + id)
       .map(res => res.json());
   }
 
