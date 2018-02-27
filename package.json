@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -18,6 +18,6 @@
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.1"
   },
-  "author": "",
+  "author": "Adam Weaver (https://parkersalterego.github.io/portfolio)",
   "license": "ISC"
 }
