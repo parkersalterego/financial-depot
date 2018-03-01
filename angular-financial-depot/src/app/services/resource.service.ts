@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Resource } from '../interfaces/resource';
 import { Observable } from 'rxjs/observable';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -11,7 +12,7 @@ const httpOptions = {
 
 @Injectable()
 export class ResourceService {
-  resourcesUrl = 'resources';
+  resourcesUrl = `${environment.api}resources`;
   resources: Resource[];
   editResource: Boolean;
   editableResourceId: String;

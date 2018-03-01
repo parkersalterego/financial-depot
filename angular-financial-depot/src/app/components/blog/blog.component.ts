@@ -64,8 +64,6 @@ export class BlogComponent implements OnInit {
   }
 
   showPost(i) {
-    console.log(this.posts[0]);
-    console.log(i);
     this.blogService.selectPost(this.posts[i]);
     this.blogService.editablePostId = this.posts[i]._id;
     this.window.scrollTo(0, 0);

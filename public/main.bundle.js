@@ -589,8 +589,6 @@ var BlogComponent = (function () {
         this.blogService.deletePost(this.blogService.editablePostId).subscribe();
     };
     BlogComponent.prototype.showPost = function (i) {
-        console.log(this.posts[0]);
-        console.log(i);
         this.blogService.selectPost(this.posts[i]);
         this.blogService.editablePostId = this.posts[i]._id;
         this.window.scrollTo(0, 0);
@@ -1428,13 +1426,11 @@ var NewResourceComponent = (function () {
     };
     NewResourceComponent.prototype.onSubmit = function () {
         var _this = this;
-        console.log('submit clicked');
         if (this.resourceService.editResource === true && this.title !== '' && this.image !== '' && this.url !== '') {
             this.resource.title = this.title;
             this.resource.image = this.image;
             this.resource.url = this.url;
             this.resourceService.updateResource(this.resource).subscribe(function (resource) {
-                console.log('saved');
                 if (confirm('Resource saved! Would you like to draft another post?')) {
                     _this.title = '';
                     _this.image = '';
@@ -1451,7 +1447,6 @@ var NewResourceComponent = (function () {
             this.resource.image = this.image;
             this.resource.url = this.url;
             this.resourceService.addResource(this.resource).subscribe(function (resource) {
-                console.log('saved');
                 if (confirm('Resource saved! Would you like to draft another post?')) {
                     _this.title = '';
                     _this.image = '';
@@ -1863,6 +1858,7 @@ var ReversePipe = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1875,6 +1871,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var BlogService = (function () {
     function BlogService(http) {
         this.http = http;
@@ -1883,23 +1880,23 @@ var BlogService = (function () {
         this.selectedPost = post;
     };
     BlogService.prototype.getPosts = function () {
-        return this.http.get('/posts')
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api + "posts")
             .map(function (res) { return res.json(); });
     };
     BlogService.prototype.getPostById = function (id) {
-        return this.http.get('/posts/' + id)
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api + "posts/" + id)
             .map(function (res) { return res.json(); });
     };
     BlogService.prototype.addPost = function (post) {
-        return this.http.post('/posts/', post)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api + "posts/", post)
             .map(function (res) { return res.json(); });
     };
     BlogService.prototype.updatePost = function (post) {
-        return this.http.put("/posts/" + post._id, post)
+        return this.http.put(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api + "posts/" + post._id, post)
             .map(function (res) { return res.json; });
     };
     BlogService.prototype.deletePost = function (id) {
-        return this.http.delete('/posts/' + id)
+        return this.http.delete(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api + "posts/" + id)
             .map(function (res) { return res.json(); });
     };
     BlogService = __decorate([
@@ -1921,6 +1918,7 @@ var BlogService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1933,13 +1931,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var httpOptions = {
     headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' })
 };
 var ResourceService = (function () {
     function ResourceService(http) {
         this.http = http;
-        this.resourcesUrl = '/resources';
+        this.resourcesUrl = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api + "resources";
     }
     ResourceService.prototype.getResources = function () {
         return this.http.get(this.resourcesUrl);
@@ -1975,6 +1974,7 @@ var ResourceService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1987,6 +1987,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
@@ -1994,13 +1995,13 @@ var UserService = (function () {
     UserService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/users/register', user, { headers: headers })
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api + "users/register", user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.authenticateUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/users/authenticate', user, { headers: headers })
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api + "users/authenticate", user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.getProfile = function () {
@@ -2008,7 +2009,7 @@ var UserService = (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('/users/profile', { headers: headers })
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api + "users/profile", { headers: headers })
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.storeUserData = function (token, user) {
@@ -2139,7 +2140,8 @@ var WINDOW_PROVIDERS = [
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: false
+    production: false,
+    api: 'http://138.68.234.228:8080/'
 };
 
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class BlogService {
@@ -19,28 +20,28 @@ export class BlogService {
   }
 
   getPosts() {
-    return this.http.get('posts')
+    return this.http.get(`${environment.api}posts`)
     .map(res => res.json());
   }
 
   getPostById(id) {
-    return this.http.get('posts/' + id)
+    return this.http.get(`${environment.api}posts/` + id)
     .map(res => res.json());
 
   }
 
   addPost(post) {
-    return this.http.post('posts/', post)
+    return this.http.post(`${environment.api}posts/`, post)
       .map(res => res.json());
   }
 
   updatePost(post) {
-    return this.http.put(`posts/${post._id}`, post)
+    return this.http.put(`${environment.api}posts/${post._id}`, post)
       .map(res => res.json);
   }
 
   deletePost(id) {
-    return this.http.delete('posts/' + id)
+    return this.http.delete(`${environment.api}posts/` + id)
       .map(res => res.json());
   }
 
