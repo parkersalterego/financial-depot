@@ -105,14 +105,13 @@ export class NewResourceComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submit clicked');
     if (this.resourceService.editResource === true && this.title !== '' && this.image !== '' && this.url !== '') {
       this.resource.title = this.title;
       this.resource.image = this.image;
       this.resource.url = this.url;
 
       this.resourceService.updateResource(this.resource).subscribe(resource => {
-        console.log('saved');
+
         if (confirm('Resource saved! Would you like to draft another post?')) {
           this.title = '';
           this.image = '';
@@ -128,7 +127,7 @@ export class NewResourceComponent implements OnInit {
       this.resource.url = this.url;
 
       this.resourceService.addResource(this.resource).subscribe(resource => {
-        console.log('saved');
+
         if (confirm('Resource saved! Would you like to draft another post?')) {
           this.title = '';
           this.image = '';

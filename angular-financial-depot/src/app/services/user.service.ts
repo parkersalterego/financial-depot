@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { tokenNotExpired } from 'angular2-jwt';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
@@ -13,7 +14,7 @@ export class UserService {
   registerUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('/users/register', user, {headers: headers})
+    return this.http.post(`${environment.api}users/register`, user, {headers: headers})
       .map(res => res.json());
 
   }
@@ -21,7 +22,7 @@ export class UserService {
   authenticateUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('/users/authenticate', user, {headers: headers})
+    return this.http.post(`${environment.api}users/authenticate`, user, {headers: headers})
       .map(res => res.json());
   }
 
@@ -30,7 +31,7 @@ export class UserService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('/users/profile', {headers: headers})
+    return this.http.get(`${environment.api}users/profile`, {headers: headers})
       .map(res => res.json());
   }
 
