@@ -2140,7 +2140,7 @@ var WINDOW_PROVIDERS = [
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: false,
+    production: true,
     api: 'http://138.68.234.228:8080/'
 };
 
